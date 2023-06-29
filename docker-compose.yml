@@ -1,0 +1,77 @@
+version: '3.1'
+services:
+  redis-master1:
+    image: redis:6.2.10 # 创建容器时所需的镜像
+    container_name: redis-master1 # 服务名称
+    restart: always # 容器总是重新启动
+    network_mode: "host" # host 网络模式
+    command: redis-server /usr/local/etc/redis/redis.conf # 覆盖容器启动后默认执行的命令
+    volumes: # 数据卷，目录挂载
+      - ./master1/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./master1/data:/data
+    ports:
+      - "6379:6379"
+      - "16379:16379"
+  redis-master2:
+    image: redis:6.2.10 # 创建容器时所需的镜像
+    container_name: redis-master2 # 服务名称
+    restart: always # 容器总是重新启动
+    network_mode: "host" # host 网络模式
+    command: redis-server /usr/local/etc/redis/redis.conf # 覆盖容器启动后默认执行的命令
+    volumes: # 数据卷，目录挂载
+      - ./master2/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./master2/data:/data
+    ports:
+      - "6380:6380"
+      - "16380:16380"
+
+  redis-master3:
+    image: redis:6.2.10 # 创建容器时所需的镜像
+    container_name: redis-master3 # 服务名称
+    restart: always # 容器总是重新启动
+    network_mode: "host" # host 网络模式
+    command: redis-server /usr/local/etc/redis/redis.conf # 覆盖容器启动后默认执行的命令
+    volumes: # 数据卷，目录挂载
+      - ./master3/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./master3/data:/data
+    ports:
+      - "6381:6381"
+      - "16381:16381"
+
+  redis-slave1:
+    image: redis:6.2.10 # 创建容器时所需的镜像
+    container_name: redis-slave1 # 服务名称
+    restart: always # 容器总是重新启动
+    network_mode: "host" # host 网络模式
+    command: redis-server /usr/local/etc/redis/redis.conf # 覆盖容器启动后默认执行的命令
+    volumes: # 数据卷，目录挂载
+      - ./slave1/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./slave1/data:/data
+    ports:
+      - "6382:6382"
+      - "16382:16382"
+
+  redis-slave2:
+    image: redis:6.2.10 # 创建容器时所需的镜像
+    container_name: redis-slave2 # 服务名称
+    restart: always # 容器总是重新启动
+    network_mode: "host" # host 网络模式
+    command: redis-server /usr/local/etc/redis/redis.conf # 覆盖容器启动后默认执行的命令
+    volumes: # 数据卷，目录挂载
+      - ./slave2/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./slave2/data:/data
+    ports:
+      - "6383:6383"
+      - "16383:16383"
+  redis-slave3:
+    image: redis:6.2.10 # 创建容器时所需的镜像
+    container_name: redis-slave3 # 服务名称
+    restart: always # 容器总是重新启动
+    network_mode: "host" # host 网络模式
+    command: redis-server /usr/local/etc/redis/redis.conf # 覆盖容器启动后默认执行的命令
+    volumes: # 数据卷，目录挂载
+      - ./slave3/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./slave3/data:/data
+    ports:
+      - "6384:6384"
+      - "16384:16384"
